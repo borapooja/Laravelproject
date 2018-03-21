@@ -16,25 +16,26 @@
 Auth::routes();
 
 Route::group(['middleware' => ['web','auth']],function(){
-			Route::get('/', function () {
-			  return view('welcome');
-			});
+	Route::get('/', function () {
+	  return view('welcome');
+	});
 
-   Route::get('/home',function(){
-    if(Auth::user()->admin == 0){
-     return view('home');
+ Route::get('/home',function(){
+		if(Auth::user()->admin == 0){
+		 return view('home');
+		} else {
+		//Route::get('/home','AdminController@index');
+		$users['users']= \App\User:: all();
+		if($users['users']){
+		return view('adminhome',$users);	
+		 } else {
+		  	return view('adminhome');	
+		   }
+		 }
+		}); 
 
-    }else {
-      //Route::get('/home','AdminController@index');
-      $users['users']= \App\User:: all();
-      if($users['users']){
-      return view('adminhome',$users);	
-    }else {
-    	return view('adminhome');	
-    	
-    }
-    }
+ Route::get('/delete_data/{id}','HomeController@deleteData');
+ Route::get('/edit_data/{id}','HomeController@editData');
 
-  }); 
-
- });
+  });
+Route::get('/change_password','HomeController@changePassword');

@@ -54,6 +54,19 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        
+                                        <a href="{{ route('logout') }}"
+                                           >
+                                            Change Password
+                                        </a>
+
+                                        <form id="change-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                        <a href="{{ route('register') }}"
+                                            >
+                                            Edit Profile
+                                        </a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -63,6 +76,7 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+                                       
                                     </li>
                                 </ul>
                             </li>
