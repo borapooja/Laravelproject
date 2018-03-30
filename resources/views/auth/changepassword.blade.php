@@ -48,14 +48,14 @@
             </div>
             <div class="form-group">
               <div class="col-md-6 col-md-offset-4">
+                <button type="submit" class="btn btn-success">
+                  Update
+                </button>
                 <a href="/home">
-                  <button type="button" class="btn btn-primary">
+                  <button type="button" class="btn btn-default">
                     Cancel
                   </button>
                 </a>
-                <button type="submit" class="btn btn-success">
-                  Change Password
-                </button>
               </div>
             </div>
           </form>

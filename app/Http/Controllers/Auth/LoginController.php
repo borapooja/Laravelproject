@@ -47,11 +47,12 @@ class LoginController extends Controller
             $this->username() => 'required|exists:users,email,active,0', 'password' => 'required'
         ], $messages);
     }
+    
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
-
+      /*Overriding login controller*/
     //public function login(Request $request)
   //{
     /*if(Auth::attempt([
