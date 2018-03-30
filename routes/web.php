@@ -41,7 +41,7 @@ Route::get('/changePassword','HomeController@showChangePasswordForm');
 Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 Route::group(['middleware' => 'App\Http\Middleware\IsAdmin'], function()
 	{
-//Route::post('/savenew_password','HomeController@savenewPassword');
+Route::any('/register-data','AdminController@registerData');
 Route::get('/register-user','AdminController@registerUser');
 Route::any('/update-data/{id}','AdminController@updateData');
 Route::get('/edit-user/{id}','AdminController@editForm');

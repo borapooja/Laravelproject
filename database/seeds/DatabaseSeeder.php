@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'admin' => '1',
         ]);*/
 
-
+       ///calll admin seeder for default entry.
         $this->call(admindetail::class);
         // using model
         /*$user = new User();
