@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <!--  @if(Session::has('invalid-login'))
+                <div class="alert alert-success" id="confirm">
+                    <span>{{session()->get('invalid-login')}}</span>
+                </div>
+            @endif -->
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','admin','mobile'
+        'name', 'email', 'password','admin','mobile','active',
     ];
 
     /**
@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function findForPassport($identifier) 
+    {
+        return User::orWhere(‘email’, $identifier)->where(‘active’, 0)->first();
+    }
 }

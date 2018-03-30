@@ -26,6 +26,9 @@
                   <!-- <div class="alert alert-success">
                     You're Logged in As Admin.
                   </div> -->
+                  <div align="right">
+                    <a href="/register-user"><button type="button" id="add_new" name="add_new" align= "right" class="btn btn-success">Add User</button></a>
+                  </div><br>
                   <table class="table table-hover table-bordered">
                     <thead>
                       <tr>
@@ -44,7 +47,14 @@
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
                             <td>{{ $value->mobile }}</td>
-                            <td><a href="/edit_data{{$value->id}}" class="btn btn-primary">Edit</a>||<a href="/delete_data/{{$value->id}}" class="btn btn-danger">Delete</td>
+                            <td><a href="/edit-user/{{$value->id}}" class="btn btn-success">Edit</a> 
+                              <a href="/delete_data/{{$value->id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete ?')">Delete</a>
+                              @if($value->active == 0)
+                              <a href="/block-user/{{$value->id}}" class="btn btn-primary" onclick="return confirm('Are you sure you want to Block this user ?')"> Block</a>
+                            @else
+                            <a href="/unblock-user/{{$value->id}}" class="btn btn-warning" onclick="return confirm('Are you sure you want to Unblock this user ?')"> Unblock</a>
+                            @endif
+                          </td>
                           </tr>
                           @endforeach
                       </tbody>

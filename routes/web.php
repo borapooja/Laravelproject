@@ -34,8 +34,25 @@ Route::group(['middleware' => ['web','auth']],function(){
 		 }
 		}); 
 
- Route::get('/delete_data/{id}','HomeController@deleteData');
- Route::get('/edit_data/{id}','HomeController@editData');
 
-  });
-Route::get('/change_password','HomeController@changePassword');
+Route::get('/manage-detail','HomeController@showmanageForm');
+Route::post('/manage-detail','HomeController@savemanageForm');
+Route::get('/changePassword','HomeController@showChangePasswordForm');
+Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
+Route::group(['middleware' => 'App\Http\Middleware\IsAdmin'], function()
+	{
+//Route::post('/savenew_password','HomeController@savenewPassword');
+Route::get('/register-user','AdminController@registerUser');
+Route::any('/update-data/{id}','AdminController@updateData');
+Route::get('/edit-user/{id}','AdminController@editForm');
+Route::post('/register-data/{id}','AdminController@updateForm');
+Route::get('/block-user/{id}','AdminController@blockUser');
+Route::get('/unblock-user/{id}','AdminController@unblockUser');
+Route::get('/delete_data/{id}','HomeController@deleteData');
+Route::get('/edit_data/{id}','HomeController@editData');
+});
+ });
+
+
+/*Route::group(['middleware' => 'App\Http\Middleware\IsAdmin'], function()
+	{*/

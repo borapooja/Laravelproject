@@ -55,15 +55,15 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         
-                                        <a href="{{ route('logout') }}"
+                                        <a href="/changePassword"
                                            >
                                             Change Password
                                         </a>
 
-                                        <form id="change-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <!-- <form id="change-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
-                                        </form>
-                                        <a href="{{ route('register') }}"
+                                        </form> -->
+                                        <a href="/manage-detail"
                                             >
                                             Edit Profile
                                         </a>
