@@ -40,14 +40,14 @@ class LoginController extends Controller
      protected function validateLogin()
     {
         $messages = [
-            'email.exists' => 'Account is not active! contact Admin',
+            'email.exists' => 'Account is not active or Your email id is not registered! contact Admin',
         ];
 
         $this->validate(request(), [
             $this->username() => 'required|exists:users,email,active,0', 'password' => 'required'
         ], $messages);
     }
-    
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
