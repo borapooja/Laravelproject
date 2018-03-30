@@ -1,0 +1,14 @@
+1) run 'composer update' (To create vendor folder)
+2) Rename .env.example file in .env file 
+3) set database, username or password in .env file
+4) run php artisan genrate:key (To genrate key)
+5) run 'php artisan make:dbcreate {your-database-name} {your-connection-name}' (for create database)
+6) run php artisan db:seed
+ or 
+ run php artisan db:seed --class=admindetail(if different seed is created)
+    
+    
+7) run php artisan migrate (TO Create tables in database)
+8) admin username -- 'pooja.bora@w3villa@.com'
+         password -- '1122334455'
+         
