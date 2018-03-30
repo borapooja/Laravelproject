@@ -11,4 +11,5 @@
 7) run php artisan migrate (TO Create tables in database)
 8) username: 'pooja.bora@w3villa@.com'
   password : '1122334455'
+9) run php artisan serve
          
