@@ -1,21 +1,12 @@
-@extends('layouts.app')
+@include('layouts.header')
+@include('layouts.navigation')
 
-@section('content')
-<div class="container">
-  <div class="row">
-       @if(Session::has('admin-success'))
-    <div class="alert alert-success" id="confirm">
-      <span>{{session()->get('admin-success')}}</span>
-    </div>
-                    @endif
-      @if(Session::has('delete-success'))
-    <div class="alert alert-success" id="confirm">
-      <span>{{session()->get('delete-success')}}</span>
-    </div>
-          @endif
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">Dashboard</div>
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+             Dashboard 
+        </h1>
         <div class="panel-body">
           @if (session('status'))
           <div class="alert alert-success">
@@ -23,6 +14,11 @@
           </div>
         @endif
           <div align="right">
+            <!-- <a href="/display-dashboard"> -->
+               <button type="button" id="add_setting" name="add_setting" class="btn btn-info">Settings</button>
+           <!--  </a> -->
+              <button type="button" id="add_role" name="add_role" align= "right" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Role</button>
+            
             <a href="/register-user">
               <button type="button" id="add_new" name="add_new" align= "right" class="btn btn-success">Add User</button>
             </a>
@@ -34,6 +30,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
+                <th>Role</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -44,6 +41,10 @@
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->email }}</td>
                 <td>{{ $value->mobile }}</td>
+                <td>@if ($value->admin == 1) 
+                  <span class="label label-info">admin</span> @else
+                  <span class="label label-default"> user</span> @endif
+                </td>
                 <td>
                   <a href="/edit-user/{{$value->id}}" class="btn btn-success">Edit</a> 
                   <a href="/delete_data/{{$value->id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete ?')">Delete
@@ -59,9 +60,33 @@
               @endforeach
             </tbody>
           </table>
+          {!! $users->links('auth.pagination') !!}
         </div>
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Role</h4>
+              </div>
+              <div class="modal-body">
+                <div class="col-md-12">
+                <div class="col-md-4"><label>Name : </label></div>
+                  <div class="col-md-6">
+                    <input type="text" name="createrole" id="createrole" class="form-control" placeholder="Enter role name">
+                </div>
+              </div><br><br>
+              <div class="" align="right">
+                <button type="button" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
-</div>
-@endsection
+@include('layouts.footer')

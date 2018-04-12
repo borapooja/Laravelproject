@@ -1,10 +1,13 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">Manage Profile</div>
+
+@include('layouts.header')
+@include('layouts.navigation')
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+             Manage Profile
+        </h1>
+        
         <div class="panel-body">
           @if (session('error'))
           <div class="alert alert-danger">
@@ -43,7 +46,8 @@
             <div class="form-group">
               <label for="mobile" class="col-md-4 control-label">Mobile :</label>
               <div class="col-md-6">
-                <input id="mobile" type="number" value="{{ Auth::user()->mobile}}" class="form-control" name="mobile" placeholder="Enter Mobile" required>
+                <input id="mobile" maxlength="10" minlength="10" class="form-control" 
+                      onkeypress='validate(event)' value="{{ Auth::user()->mobile}}" class="form-control" name="mobile" placeholder="Enter Mobile" required>
               </div>
             </div>
             <div class="form-group">
@@ -63,5 +67,5 @@
       </div>
     </div>
   </div>
-</div>
-@endsection
+
+@include('layouts.footer')

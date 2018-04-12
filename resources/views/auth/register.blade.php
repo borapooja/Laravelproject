@@ -36,7 +36,7 @@
             <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
               <label for="mobile" class="col-md-4 control-label">Mobile Number</label>
               <div class="col-md-6">
-                <input id="mobile" type="number" class="form-control" name="mobile" value="{{ old('mobile') }}" required>
+                <input id="mobile" type="text" class="form-control" name="mobile" value="{{ old('mobile') }}" onkeypress="validate(event)" required>
                 @if ($errors->has('mobile'))
                 <span class="help-block">
                   <strong>{{ $errors->first('mobile') }}</strong>

@@ -39,7 +39,8 @@
                 <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
                   <label for="mobile" class="col-md-4 control-label">Mobile Number </label>
                   <div class="col-md-6">
-                    <input id="mobile" type="number" class="form-control" name="mobile" value="{{ $data['mobile']}}" placeholder="Enter Mobile Number" required>
+                    <input id="mobile" type="text" maxlength="10" minlength="10" class="form-control" name="mobile"
+                      onkeypress='validate(event)' value="{{ $data['mobile']}}" placeholder="Enter Mobile Number" required>
 
                     @if ($errors->has('mobile'))
                       <span class="help-block">
@@ -50,11 +51,11 @@
                 </div>
                 <div class="form-group">
                   <div class="col-md-6 col-md-offset-4">
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" title="Click here to update data" class="btn btn-success">
                         Update
                     </button>
                     <a href="/home">
-                      <button type="button" class="btn btn-default">
+                      <button type="button"  title="Click here to return back" class="btn btn-default">
                         Back
                       </button>
                     </a>

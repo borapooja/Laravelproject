@@ -27,8 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function findForPassport($identifier) 
-    {
-        return User::orWhere(‘email’, $identifier)->where(‘active’, 0)->first();
+    public function setPasswordAttribute($password)
+    {   
+        $this->attributes['password'] = bcrypt($password);
     }
 }

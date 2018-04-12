@@ -1,10 +1,11 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">Change password</div>
+@include('layouts.header')
+@include('layouts.navigation')
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+             Change Password
+        </h1>
         <div class="panel-body">
           @if (session('error'))
           <div class="alert alert-danger">
@@ -48,11 +49,11 @@
             </div>
             <div class="form-group">
               <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="btn btn-success">
+                <button type="submit" title="Click here to change password" class="btn btn-success">
                   Update
                 </button>
                 <a href="/home">
-                  <button type="button" class="btn btn-default">
+                  <button type="button" title="Click here to cancel" class="btn btn-default">
                     Cancel
                   </button>
                 </a>
@@ -62,6 +63,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 </div>
-@endsection
+
+@include('layouts.footer')

@@ -29,6 +29,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    
+    public function displayData(){
+      //dd('hello');
+        return view('admin.settings');
+    }
 
     public function deleteData($id){
         $user = new User();
@@ -45,10 +50,10 @@ class HomeController extends Controller
     //DB::table('users')->where('id', $id)->update(['name'=>$request->name, 'email'=>$request->email,'mobile'=>$request->mobile, 'password'=>$request->password]);
     //
     //$data = User::find($id);
-    $data->name =$request->name;
-    $data->email =$request->email;
-    $data->mobile =$request->mobile;
-    $data->name =$request->name;
+    $data->name   = $request->name;
+    $data->email  = $request->email;
+    $data->mobile = $request->mobile;
+    $data->name   = $request->name;
     $data->save();
     Session::flash('admin-success','User Bolcked Successfully.');
     return redirect('/home');

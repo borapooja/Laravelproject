@@ -53,17 +53,18 @@ class AdminController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'mobile' => 'required|digits:10|numeric',
             'password' => 'required|string|min:6|confirmed',
-            
+            'role' => 'required',
         ]);
           //$data = $request->all();
           /*print_r($data);die;
           User ::create($data);*/
-			$user = new User();
-			$user->name = $request->name;
-			$user->email = $request->email;
-			$user->mobile = $request->mobile;
+			$user          = new User();
+			$user->name    = $request->name;
+			$user->email   = $request->email;
+			$user->mobile  = $request->mobile;
+      $user->admin   = $request->role;
 			$user->password = bcrypt($request->password);
-			$user->admin = 0;
+			//$user->admin   = 0;
 			$user->remember_token = str_random(100);
 
     $user->save();

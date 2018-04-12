@@ -1,11 +1,12 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">Register</div>
+@include('layouts.header')
+@include('layouts.navigation')
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+             Register 
+        </h1>
+      <!--   <div class="panel-heading"></div> -->
         <div class="panel-body">
           <form class="form-horizontal" method="POST" action="/register-data">
                     {{ csrf_field() }}
@@ -30,6 +31,27 @@
                 <span class="help-block">
                   <strong>{{ $errors->first('email') }}</strong>
                 </span>
+                            @endif
+              </div>
+            </div>
+            <div class="form-group{{ $errors->has('admin') ? ' has-error' : '' }}">
+              <label for="role" class="col-md-4 control-label">Role*</label>
+              <div class="col-md-6">
+                <input type="radio" name="role" id="role" value="1">admin </b>
+                <input type="radio" name="role" id="role" value="0" checked>user </b>
+                <input type="radio" name="role" id="role" value="2">employee </br>
+                <!-- <select id="role"  class="form-control" name="role" 
+                  placeholder="Enter role" required>
+                  <option>Select</option>
+                  <option value= "0">User</option>
+                  <option value= "1">Admin</option>
+                  <option value= "2">Employee</option>
+                </select> -->
+                            @if ($errors->has('role'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('role') }}</strong>
+                </span>
+
                             @endif
               </div>
             </div>
@@ -81,4 +103,4 @@
     </div>
   </div>
 </div>
-@endsection
+@include('layouts.footer')
